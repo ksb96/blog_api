@@ -3,6 +3,8 @@ package com.kmk.blogapi.services;
 import java.util.List;
 
 import com.kmk.blogapi.payloads.CategoryDto;
+import com.kmk.blogapi.payloads.CategoryResponse;
+import com.kmk.blogapi.payloads.PostResponse;
 
 public interface CategoryService {
 
@@ -16,5 +18,5 @@ public interface CategoryService {
 	public CategoryDto getCategory(Integer categoryId);
 	//getAll
 	List<CategoryDto> getCategories();
-	public List<CategoryDto> getAllCategory();
+	CategoryResponse getAllCategory(Integer pageNumber, Integer pageSize);
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.kmk.blogapi.entities.Post;
 import com.kmk.blogapi.payloads.PostDto;
+import com.kmk.blogapi.payloads.PostResponse;
 
 public interface PostService {
 	
@@ -11,16 +12,16 @@ public interface PostService {
 	PostDto createPost(PostDto postDto, Integer userId, Integer categoryId);
 	
 	//update
-	Post updatePost(PostDto postDto, Integer postId);
+	PostDto updatePost(PostDto postDto, Integer postId);
 	
 	//delete
 	void deletePost(Integer postId);
 	
 	//get all posts
-	List<Post> getAllPost();
+	PostResponse getAllPost(Integer pageNumber, Integer pageSize);
 	
 	//get single post
-	Post getPostById(Integer postId);
+	PostDto getPostById(Integer postId);
 	
 	//get all posts by category
 	List<PostDto> getPostsByCategory(Integer categoryId);

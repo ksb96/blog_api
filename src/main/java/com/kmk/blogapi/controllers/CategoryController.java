@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kmk.blogapi.payloads.ApiResponse;
 import com.kmk.blogapi.payloads.CategoryDto;
+import com.kmk.blogapi.payloads.CategoryResponse;
+import com.kmk.blogapi.payloads.PostResponse;
 import com.kmk.blogapi.services.CategoryService;
 
 import jakarta.validation.Valid;
@@ -58,14 +61,17 @@ public class CategoryController {
 	public ResponseEntity<CategoryDto> getCategory(@PathVariable Integer catId) {
 		CategoryDto categoryDto = this.categoryService.getCategory(catId);
 		return new ResponseEntity<CategoryDto>(categoryDto, HttpStatus.OK);
-		
+
 	}
 
 	// get all
-	@GetMapping("/")
-	public ResponseEntity<List<CategoryDto>> getAllCategory() {
-//		List<CategoryDto> allCategories = this.categoryService.getAllCategory();
-		return ResponseEntity.ok(this.categoryService.getAllCategory());
+	@GetMapping("/categoryALL")
+	public ResponseEntity<CategoryResponse> getAllCategory(
+			@RequestParam(value = "pageNumber", defaultValue = "0", required = false) Integer pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = "5", required = false) Integer pageSize) {
 		
+		CategoryResponse categoryResponse = this.categoryService.getAllCategory(pageNumber, pageSize);
+		return new ResponseEntity<CategoryResponse>(categoryResponse, HttpStatus.OK);
+
 	}
 }
