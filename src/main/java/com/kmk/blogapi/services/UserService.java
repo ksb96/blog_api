@@ -2,7 +2,10 @@ package com.kmk.blogapi.services;
 
 import java.util.List;
 
+import com.kmk.blogapi.payloads.CategoryDto;
+import com.kmk.blogapi.payloads.CategoryResponse;
 import com.kmk.blogapi.payloads.UserDto;
+import com.kmk.blogapi.payloads.UserResponse;
 
 public interface UserService {
 	
@@ -15,6 +18,9 @@ public interface UserService {
 	UserDto getUserById(Integer userId);
 
 	List<UserDto> getAllUsers();
+	UserResponse getAllUsser(Integer pageNumber, Integer pageSize);
 
 	void deleteUser(Integer userId);
+
+	UserResponse getAllUsers(Integer pageNumber, Integer pageSize);
 }
