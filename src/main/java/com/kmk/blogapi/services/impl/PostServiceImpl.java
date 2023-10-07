@@ -23,6 +23,7 @@ import com.kmk.blogapi.repo.PostRepo;
 import com.kmk.blogapi.repo.UserRepo;
 import com.kmk.blogapi.services.PostService;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -76,10 +77,11 @@ public class PostServiceImpl implements PostService {
 		this.postRepo.delete(post);
 	}
 
-	@Override
-	public PostResponse getAllPost(Integer pageNumber, Integer pageSize) {
+	@Override	
+	//add-> String sortDir
+	public PostResponse getAllPost(Integer pageNumber, Integer pageSize, String sortBy) {
 		
-		Pageable p = PageRequest.of(pageNumber, pageSize);
+		Pageable p = PageRequest.of(pageNumber, pageSize, Sort.by(sortBy).ascending());
 		
 		Page<Post> pagePost = this.postRepo.findAll(p);
 		List<Post> allPosts = pagePost.getContent();
