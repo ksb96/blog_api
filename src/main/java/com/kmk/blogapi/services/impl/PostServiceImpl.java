@@ -77,19 +77,19 @@ public class PostServiceImpl implements PostService {
 		this.postRepo.delete(post);
 	}
 
-	@Override	
-	//add-> String sortDir
+	@Override
+	// add-> String sortDir
 	public PostResponse getAllPost(Integer pageNumber, Integer pageSize, String sortBy) {
-		
-		Pageable p = PageRequest.of(pageNumber, pageSize, Sort.by(sortBy).ascending());
-		
+
+		Pageable p = PageRequest.of(pageNumber, pageSize, Sort.by(sortBy).ascending()); // by default 'asc'
+
 		Page<Post> pagePost = this.postRepo.findAll(p);
 		List<Post> allPosts = pagePost.getContent();
-		
+
 //		List<Post> posts = this.postRepo.findAll();
 		List<PostDto> postDtos = allPosts.stream().map((post) -> this.modelMapper.map(post, PostDto.class))
 				.collect(Collectors.toList());
-		
+
 		PostResponse postResponse = new PostResponse();
 		postResponse.setContent(postDtos);
 		postResponse.setPageNumber(pagePost.getNumber());
@@ -97,7 +97,7 @@ public class PostServiceImpl implements PostService {
 		postResponse.setTotalRecods(pagePost.getTotalElements());
 		postResponse.setTotalPages(postResponse.getTotalPages());
 		postResponse.setLastPage(pagePost.isLast());
-		
+
 		return postResponse;
 	}
 
@@ -137,9 +137,11 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public List<Post> searchPosts(String keyword) {
-
-		return null;
+	public List<PostDto> searchPosts(String keyword) {
+		List<Post> posts = this.postRepo.findByTitleContaining(keyword); //%LIKE query will be created
+		List<PostDto> postDtos = posts.stream().map((post) -> this.modelMapper.map(post, PostDto.class))
+				.collect(Collectors.toList());
+		return postDtos;
 	}
 
 }

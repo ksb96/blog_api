@@ -55,11 +55,11 @@ public class PostController {
 
 	// update POST by ID
 	@PutMapping("/posts/{postId}")
-	public ResponseEntity<PostDto> updatePost(@RequestBody PostDto postDto,@PathVariable Integer postId) {
+	public ResponseEntity<PostDto> updatePost(@RequestBody PostDto postDto, @PathVariable Integer postId) {
 		PostDto updatePost = this.postService.updatePost(postDto, postId);
 		return new ResponseEntity<PostDto>(updatePost, HttpStatus.OK);
 	}
-	
+
 	// delete POST by ID
 	@DeleteMapping("/posts/{postId}")
 	public ApiResponse deletePost(@PathVariable Integer postId) {
@@ -70,11 +70,12 @@ public class PostController {
 	// get ALL POSTS
 	@GetMapping("/posts")
 	public ResponseEntity<PostResponse> getAllPost(
-			@RequestParam(value = "pageNumber", defaultValue = "0", required=false) Integer pageNumber,
-			@RequestParam(value = "pageSize", defaultValue = "5", required=false) Integer pageSize, //data in current page
-			@RequestParam(value = "sortBy", defaultValue = "postId", required=false) String sortBy
+			@RequestParam(value = "pageNumber", defaultValue = "0", required = false) Integer pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = "5", required = false) Integer pageSize, // data in current
+																										// page
+			@RequestParam(value = "sortBy", defaultValue = "postId", required = false) String sortBy
 //			@RequestParam(value = "sortDir", defaultValue = "ASC", required=false) String sortDir
-			) {
+	) {
 		PostResponse postResponse = this.postService.getAllPost(pageNumber, pageSize, sortBy);
 		return new ResponseEntity<PostResponse>(postResponse, HttpStatus.OK);
 	}
@@ -85,4 +86,12 @@ public class PostController {
 		PostDto postById = this.postService.getPostById(postId);
 		return new ResponseEntity<PostDto>(postById, HttpStatus.OK);
 	}
+
+	// search
+	@GetMapping("/posts/search/{keywords}")
+	public ResponseEntity<List<PostDto>> searchPostByTitle(@PathVariable("keywords") String keywords) {
+		List<PostDto> searchResult = this.postService.searchPosts(keywords);
+		return new ResponseEntity<List<PostDto>>(searchResult, HttpStatus.OK);
+	}
+
 }
