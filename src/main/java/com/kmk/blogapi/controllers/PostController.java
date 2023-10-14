@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kmk.blogapi.config.AppConstants;
 import com.kmk.blogapi.entities.Post;
 import com.kmk.blogapi.payloads.ApiResponse;
 import com.kmk.blogapi.payloads.CategoryDto;
@@ -64,17 +65,17 @@ public class PostController {
 	@DeleteMapping("/posts/{postId}")
 	public ApiResponse deletePost(@PathVariable Integer postId) {
 		this.postService.deletePost(postId);
-		return new ApiResponse("Post successfully deleted !!", true);
+		return new ApiResponse(AppConstants.MESSAGE, true);
 	}
 
 	// get ALL POSTS
 	@GetMapping("/posts")
 	public ResponseEntity<PostResponse> getAllPost(
-			@RequestParam(value = "pageNumber", defaultValue = "0", required = false) Integer pageNumber,
-			@RequestParam(value = "pageSize", defaultValue = "5", required = false) Integer pageSize, // data in current
+			@RequestParam(value = "pageNumber", defaultValue = AppConstants.PAGE_NUMBER, required = false) Integer pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = AppConstants.PAGE_SIZE, required = false) Integer pageSize, // data in current
 																										// page
-			@RequestParam(value = "sortBy", defaultValue = "postId", required = false) String sortBy
-//			@RequestParam(value = "sortDir", defaultValue = "ASC", required=false) String sortDir
+			@RequestParam(value = "sortBy", defaultValue = AppConstants.SORT_BY, required = false) String sortBy
+//			@RequestParam(value = "sortDir", defaultValue = AppConstants.SORT_DIR, required=false) String sortDir
 	) {
 		PostResponse postResponse = this.postService.getAllPost(pageNumber, pageSize, sortBy);
 		return new ResponseEntity<PostResponse>(postResponse, HttpStatus.OK);
