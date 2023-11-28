@@ -1,4 +1,4 @@
-package com.kmk.blogapi.security;
+package com.kmk.blogapi.payloads;
 
 import lombok.Data;
 
