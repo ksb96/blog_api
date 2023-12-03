@@ -36,7 +36,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 		String requestToken = request.getHeader("Authorization");
 
 		// bearer 2343434erdfdf4
-//		System.out.println(requestToken);
+		System.out.println(requestToken);
 
 		String username = null;
 		String token = null;
@@ -72,7 +72,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 				System.out.println("Invalid token");
 			}
 		} else {
-			System.out.println("username is null or context is not null");
+			System.out.println("username or password is incorrect");
 		}
 		filterChain.doFilter(request, response);
 	}
