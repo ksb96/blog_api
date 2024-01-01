@@ -46,7 +46,10 @@ public class UserController {
 		return ResponseEntity.ok(updatedUser);
 	}
 
+
+	//for-ADMIN 
 	// DELETE - delete user
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/{userId}")
 	public ResponseEntity<?> deleteUser(@PathVariable Integer userId) {
 		this.userService.deleteUser(userId);
