@@ -15,7 +15,8 @@ import com.kmk.blogapi.payloads.ApiResponse;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 	
-	@ExceptionHandler(ResourceNotFoundException.class) //custom exception class-added
+//	custom exception
+	@ExceptionHandler(ResourceNotFoundException.class) 
 	public ResponseEntity<ApiResponse> resourceNotFoundExceptionHandler(ResourceNotFoundException ex){
 		String message = ex.getMessage();
 		ApiResponse apiResponse = new ApiResponse(message, false);
@@ -32,5 +33,13 @@ public class GlobalExceptionHandler {
 		});
 				
 				return new ResponseEntity<Map<String, String>>(resp, HttpStatus.BAD_REQUEST);
+	}
+	
+	//custom exception
+	@ExceptionHandler(ApiException.class) 
+	public ResponseEntity<ApiResponse> handleApiException(ApiException ex){
+		String message = ex.getMessage();
+		ApiResponse apiResponse = new ApiResponse(message, true);
+		return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.BAD_REQUEST);
 	}
 }
