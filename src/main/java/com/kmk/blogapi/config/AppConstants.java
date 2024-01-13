@@ -8,4 +8,6 @@ public class AppConstants {
 	public static final String SORT_BY = "postId";
 //	public static final String SORT_DIR = "ASC";
 	public static final String MESSAGE = "Post successfully deleted !!";
+	public static final Integer NORMAL_USER = 3;
+	public static final Integer ADMIN_USER = 1;
 }

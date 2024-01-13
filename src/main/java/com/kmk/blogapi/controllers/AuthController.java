@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kmk.blogapi.exceptions.ApiException;
 import com.kmk.blogapi.payloads.JwtAuthRequest;
 import com.kmk.blogapi.payloads.JwtAuthResponse;
+import com.kmk.blogapi.payloads.UserDto;
 import com.kmk.blogapi.security.JwtTokenHelper;
 import com.kmk.blogapi.services.UserService;
 
@@ -58,6 +59,14 @@ public class AuthController {
 			System.out.println("Invalid credentials!!");
 			throw new ApiException("Invalid username or password !!");
 		}
+	}
+	
+	//user register
+	@PostMapping("/register")
+	public ResponseEntity<UserDto> registerUser(@RequestBody UserDto userDto){
+		UserDto registeredUser = this.userService.registerNewUser(userDto);
+		
+		return new ResponseEntity<UserDto>(registeredUser, HttpStatus.CREATED);
 	}
 
 }

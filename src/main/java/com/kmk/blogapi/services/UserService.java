@@ -9,6 +9,9 @@ import com.kmk.blogapi.payloads.UserResponse;
 
 public interface UserService {
 	
+	//register user
+	UserDto registerNewUser(UserDto user);
+	
 	//userDto-data transfer(var), (a bean class-type)
 	//api declaration-bean
 	UserDto createUser(UserDto user);
