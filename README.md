@@ -18,18 +18,21 @@ Basic operations like CRUD(Create, Read, Update & Delete) can be performed. Also
 5) User role,
 6) Users.
 
-![tables](/contents_req/tables-contents.PNG)
+![tables](/images/project_related/img1/tables-contents.PNG)
 
 # Authentication Method Used - 
  - JWT Tokens.
 
  # Build used -
  Maven
-![maven build](/contents_req/maven_build-SUCCESS.PNG)
+![maven build](/images/project_related/img1/maven_build-SUCCESS.PNG)
 
 # Hosting
 - localhost:8080
 
 # API Documentation
 - http://localhost:8080/swagger-ui/index.html -- Swagger
-![swagger documentation](/contents_req/swagger-doc.PNG)
+![swagger documentation](/images/project_related/img1/swagger-doc.PNG)
+
+cmd
+java -jar {pacakge name}.jar
