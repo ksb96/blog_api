@@ -14,7 +14,22 @@ import com.kmk.blogapi.config.AppConstants;
 import com.kmk.blogapi.entities.Role;
 import com.kmk.blogapi.repo.RoleRepo;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.*;
+
 @SpringBootApplication
+@OpenAPIDefinition(
+		info = @Info(
+				title = "Blog application api documentation",
+				version = "1.0.0",
+				description = "Detailed Api documentation",
+				contact = @Contact(
+						name = "ksb96"
+						),
+				license = @License(
+						name = "@ksb96"
+						)
+				))
 public class BlogApiApplication implements CommandLineRunner {
 
 	@Autowired

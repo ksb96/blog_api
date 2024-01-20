@@ -33,8 +33,17 @@ import com.kmk.blogapi.security.JwtAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
+@EnableWebMvc
 @EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
+	
+	public static final String[] PUBLIC_URLS = {
+			"api/v1/auth/**",
+			"v3/api-docs",
+			"v2/api-docs",
+			"/swagger-resources/**",
+			"/swagger-ui/**"
+	};
 
 	@Autowired
 	private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
@@ -48,7 +57,7 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-		http.csrf().disable().authorizeHttpRequests().requestMatchers("/api/v1/auth/**").permitAll().requestMatchers(HttpMethod.GET).permitAll().anyRequest()
+		http.csrf().disable().authorizeHttpRequests().requestMatchers(PUBLIC_URLS).permitAll().requestMatchers(HttpMethod.GET).permitAll().anyRequest()
 				.authenticated().and().exceptionHandling().authenticationEntryPoint(this.jwtAuthenticationEntryPoint)
 				.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.addFilterBefore(this.jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
