@@ -1,0 +1,571 @@
+{
+	"info": {
+		"_postman_id": "17cb8201-5d3c-4beb-b479-017d34ba98b0",
+		"name": "blog-app_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "22112647"
+	},
+	"item": [
+		{
+			"name": "create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"spider man\",\r\n    \"email\":\"spiderman@test.com\",\r\n    \"password\":\"spidertest\",\r\n    \"about\":\"i m spider man\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/users/"
+			},
+			"response": []
+		},
+		{
+			"name": "get user all",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0dXNlcjFAdGVzdC5jb20iLCJleHAiOjE3MDE2MTY0MDgsImlhdCI6MTcwMTU5ODQwOH0.4EzvQuGu1aZXpmDK0pkN0UUtyAzdAv34YIGNVNsAcYU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"ksb1\",\r\n    \"email\":\"ksb1@test.com\",\r\n    \"password\":\"acc\",\r\n    \"about\":\"just a test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/users"
+			},
+			"response": []
+		},
+		{
+			"name": "get ALL user - pagination",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"ksb1\",\r\n    \"email\":\"ksb1@test.com\",\r\n    \"password\":\"acc\",\r\n    \"about\":\"just a test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users/userALL?pageNumber=0&pageSize=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"userALL"
+					],
+					"query": [
+						{
+							"key": "pageNumber",
+							"value": "0"
+						},
+						{
+							"key": "pageSize",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get single user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0dXNlcjFAdGVzdC5jb20iLCJleHAiOjE3MDE2MTY0MDgsImlhdCI6MTcwMTU5ODQwOH0.4EzvQuGu1aZXpmDK0pkN0UUtyAzdAv34YIGNVNsAcYU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"ksb1\",\r\n    \"email\":\"ksb1@test.com\",\r\n    \"password\":\"acc\",\r\n    \"about\":\"just a test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/users/3"
+			},
+			"response": []
+		},
+		{
+			"name": "update user",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"black man\",\r\n        \"email\": \"blackman@test.com\",\r\n        \"password\": \"black123\",\r\n        \"about\": \"i m a black man\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/users/5"
+			},
+			"response": []
+		},
+		{
+			"name": "delete user",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"kushal1\",\r\n    \"email\":\"kushalB1@test.com\",\r\n    \"password\":\"333\",\r\n    \"about\":\"update test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/users/1"
+			},
+			"response": []
+		},
+		{
+			"name": "api/categories/-POST",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categoryDescription\": \"Topics related to politics\",\r\n    \"categoryTitle\": \"politics\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/categories/"
+			},
+			"response": []
+		},
+		{
+			"name": "api/categories/-GET ALL",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categoryTitle\": \"Literature\",\r\n    \"categoryDescription\": \"Topics related to literature\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/categories/"
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL categories - pagination",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categoryTitle\": \"Literature\",\r\n    \"categoryDescription\": \"Topics related to literature\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/categories/categoryALL?pageNumber=0&pageSize=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"categories",
+						"categoryALL"
+					],
+					"query": [
+						{
+							"key": "pageNumber",
+							"value": "0"
+						},
+						{
+							"key": "pageSize",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/categories/-GET BY ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0dXNlcjFAdGVzdC5jb20iLCJleHAiOjE3MDE2MTY0MDgsImlhdCI6MTcwMTU5ODQwOH0.4EzvQuGu1aZXpmDK0pkN0UUtyAzdAv34YIGNVNsAcYU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categoryTitle\": \"Literature\",\r\n    \"categoryDescription\": \"Topics related to literature\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/categories/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"categories",
+						"4"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/categories/-GET BY ID Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categoryTitle\": \"Literature\",\r\n    \"categoryDescription\": \"Topics related to literature\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/categories/1"
+			},
+			"response": []
+		},
+		{
+			"name": "api/categories/-GET BY ID Copy 2",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categoryTitle\": \"History\",\r\n    \"categoryDescription\": \"Topics related to world history.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/categories/4"
+			},
+			"response": []
+		},
+		{
+			"name": "create posts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"\",\r\n    \"content\":\"Chemistry is a branch of science, which deals with chemicals!!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/user/4/category/3/posts"
+			},
+			"response": []
+		},
+		{
+			"name": "get post by user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/user/4/posts"
+			},
+			"response": []
+		},
+		{
+			"name": "get ALL post",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0dXNlcjFAdGVzdC5jb20iLCJleHAiOjE3MDE2MTY0MDgsImlhdCI6MTcwMTU5ODQwOH0.4EzvQuGu1aZXpmDK0pkN0UUtyAzdAv34YIGNVNsAcYU",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8080/api/posts"
+			},
+			"response": []
+		},
+		{
+			"name": "Search post",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/posts/search/hist"
+			},
+			"response": []
+		},
+		{
+			"name": "upload image post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/E:/obb/others/picSource/Local save/1200px-NYCS-bull-trans-K.svg.png"
+						}
+					]
+				},
+				"url": "http://localhost:8080/api/post/image/upload/222"
+			},
+			"response": []
+		},
+		{
+			"name": "serve image",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/E:/obb/others/picSource/Local save/1200px-NYCS-bull-trans-K.svg.png"
+						}
+					]
+				},
+				"url": "http://localhost:8080/api/post/image/cde63079-3d2c-4e64-878d-462c483cf7fc.png"
+			},
+			"response": []
+		},
+		{
+			"name": "get ALL POST - pagination",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/posts?pageNumber=0&pageSize=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"posts"
+					],
+					"query": [
+						{
+							"key": "pageNumber",
+							"value": "0"
+						},
+						{
+							"key": "pageSize",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get POST BY ID",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "testuser1@test.com",
+						"password": "111"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/posts/3"
+			},
+			"response": []
+		},
+		{
+			"name": "delete comment/s",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content\":\"this is the 1st comment of post 2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/comments/4"
+			},
+			"response": []
+		},
+		{
+			"name": "delete POST by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/api/posts/44"
+			},
+			"response": []
+		},
+		{
+			"name": "update POST by ID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"History\",\r\n    \"content\": \"History that's it!!!\",\r\n    \"imageName\": \"history.png\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/posts/2"
+			},
+			"response": []
+		},
+		{
+			"name": "get post by category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/category/4/posts"
+			},
+			"response": []
+		},
+		{
+			"name": "login by auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testuser1@test.com\",\r\n    \"password\":\"111\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/v1/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "register user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"finalSaveUser\",\r\n    \"email\":\"finalUser@test.com\",\r\n    \"password\":\"abcd\",\r\n    \"about\":\"Not a real user\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/v1/auth/register"
+			},
+			"response": []
+		},
+		{
+			"name": "swagger docs api",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/v3/api-docs"
+			},
+			"response": []
+		}
+	]
+}
