@@ -36,14 +36,9 @@ import com.kmk.blogapi.security.JwtAuthenticationFilter;
 @EnableWebMvc
 @EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
-	
-	public static final String[] PUBLIC_URLS = {
-			"api/v1/auth/**",
-			"v3/api-docs",
-			"v2/api-docs",
-			"/swagger-resources/**",
-			"/swagger-ui/**"
-	};
+
+	public static final String[] PUBLIC_URLS = { "api/v1/auth/**", "v3/api-docs", "v2/api-docs",
+			"/swagger-resources/**", "/swagger-ui/**" };
 
 	@Autowired
 	private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
@@ -57,11 +52,13 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-		http.csrf().disable().authorizeHttpRequests().requestMatchers(PUBLIC_URLS).permitAll().requestMatchers(HttpMethod.GET).permitAll().anyRequest()
-				.authenticated().and().exceptionHandling().authenticationEntryPoint(this.jwtAuthenticationEntryPoint)
-				.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		http.csrf().disable().authorizeHttpRequests().requestMatchers(PUBLIC_URLS).permitAll()
+				.requestMatchers(HttpMethod.GET).permitAll().anyRequest().authenticated().and().exceptionHandling()
+				.authenticationEntryPoint(this.jwtAuthenticationEntryPoint).and().sessionManagement()
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.addFilterBefore(this.jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 //		DefaultSecurityFilterChain defaultSecurityFilterChain = http.build();
+//		http.authenticationProvider(daoAuthenticationProvider());
 		return http.build();
 
 	}
@@ -81,6 +78,13 @@ public class SecurityConfig {
 //		return http.getSharedObject(AuthenticationManagerBuilder.class)
 //				.userDetailsService(this.customUserDetailsService).passwordEncoder(bCryptPasswordEncoder()).and()
 //				.build();
+//	}
+//
+//	public DaoAuthenticationProvider daoAuthenticationProvider() {
+//		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+//		provider.setUserDetailsService(this.customUserDetailsService);
+//		provider.setPasswordEncoder(bCryptPasswordEncoder());
+//		return provider;
 //	}
 
 	@Bean
