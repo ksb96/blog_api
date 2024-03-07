@@ -27,12 +27,12 @@ Basic operations like CRUD(Create, Read, Update & Delete) can be performed. Also
  Maven
 ![maven build](/images/project_related/img1/maven_build-SUCCESS.PNG)
 
+- CLI build command:-
+  java -jar {pacakge name}.jar
+
 # Hosting
 - localhost:8080
 
 # API Documentation
 - http://localhost:8080/swagger-ui/index.html -- Swagger
 ![swagger documentation](/images/project_related/img1/swagger-doc.PNG)
-
-cmd
-java -jar {pacakge name}.jar
