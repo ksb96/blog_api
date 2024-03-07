@@ -1,7 +1,7 @@
 # Blog_App - REST API
 
-RESTApi's for 'Blog App' created.
-Basic operations like CRUD(Create, Read, Update & Delete) can be performed. Also, 'custom exception' handling has been done.
+REST-based Apis for 'Blog App' created.
+Basic operations like CRUD(Create, Read, Update & Delete) can be performed. Also, 'custom exceptions' handling has been done.
 
 # API categories -
 1) Authentication API.
