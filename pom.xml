@@ -13,7 +13,7 @@
 	<artifactId>blog_api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>blog_api</name>
-	<description>Demo project for Spring Boot</description>
+	<description>CRUD based api for blog-app</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

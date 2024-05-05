@@ -17,8 +17,4 @@ public class CategoryResponse {
 	private long totalRecods;
 	private int totalPages;
 	private boolean lastPage;
-	
-//	private int catId;
-//	private String categoryTitle;
-//	private String categoryDescription;
 }

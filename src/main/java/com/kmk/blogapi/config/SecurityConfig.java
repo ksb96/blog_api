@@ -63,30 +63,6 @@ public class SecurityConfig {
 
 	}
 
-//	@Override
-//	@Bean
-//	protected void configure(HttpSecurity http) throws Exception {
-//		http.authorizeRequests().requestMatchers("/api/v1/auth/login").permitAll().anyRequest().authenticated().and()
-//				.exceptionHandling().authenticationEntryPoint(this.jwtAuthenticationEntryPoint).and()
-//				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-//		http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-//	}
-
-	// basic api auth
-//	@Bean
-//	public AuthenticationManager authManager(HttpSecurity http) throws Exception {
-//		return http.getSharedObject(AuthenticationManagerBuilder.class)
-//				.userDetailsService(this.customUserDetailsService).passwordEncoder(bCryptPasswordEncoder()).and()
-//				.build();
-//	}
-//
-//	public DaoAuthenticationProvider daoAuthenticationProvider() {
-//		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-//		provider.setUserDetailsService(this.customUserDetailsService);
-//		provider.setPasswordEncoder(bCryptPasswordEncoder());
-//		return provider;
-//	}
-
 	@Bean
 	public PasswordEncoder bCryptPasswordEncoder() {
 		return new BCryptPasswordEncoder();

@@ -18,6 +18,7 @@ import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.*;
 
 @SpringBootApplication
+//swagger
 @OpenAPIDefinition(
 		info = @Info(
 				title = "Blog application api documentation",
@@ -37,6 +38,7 @@ public class BlogApiApplication implements CommandLineRunner {
 	@Autowired
 	private RoleRepo roleRepo;
 
+	//application starts from here
 	public static void main(String[] args) {
 		SpringApplication.run(BlogApiApplication.class, args);
 	}

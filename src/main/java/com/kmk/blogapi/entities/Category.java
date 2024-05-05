@@ -23,9 +23,9 @@ import lombok.Setter;
 @Getter
 public class Category {
 	
-	@Id
+	@Id //entity- java side
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
-	@Column(name = "id")
+	@Column(name = "id") //jpa map to column 'id'
 	private Integer categoryId;
 	
 	@Column(name = "title", length=50, nullable=false)

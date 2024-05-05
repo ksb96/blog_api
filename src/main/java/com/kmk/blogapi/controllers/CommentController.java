@@ -30,11 +30,6 @@ public class CommentController {
 		return new ResponseEntity<CommentDto>(createComment, HttpStatus.CREATED);
 	}
 	
-	//GET comment by ID
-	
-	
-	
-
 	// DELETE
 	@DeleteMapping("/comments/{commentId}")
 	public ResponseEntity<ApiResponse> deleteComment(@PathVariable Integer commentId) {
